@@ -18,7 +18,12 @@ router.get("/:id?", (req, res) => {
 
 // Create
 router.post("/", (req, res) => {
-    const body = req.body;
+    const id = req.params.id;
+    try {
+        res.json(await db.chirps.insert(body.userid, body));
+    } catch(err) {
+        console.log(err)
+    }
 
     // chirpsStore.CreateChirp(body);
     res.sendStatus(200);
