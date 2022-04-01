@@ -7,6 +7,13 @@ const App = () => {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
   const [chirps, setChirps] = useState([
+
+    useEffect(() => {
+      fetch("http://localhoat:3000/api/chirps")
+      .then(res => res.json())
+      .then(chirps => setChirps(chirps))
+      .catch(err => console.log(err));
+    }, []),
     {
       id: uuidv4(),
       username: "Josh",
@@ -41,6 +48,12 @@ const App = () => {
 
     setChirps([...chirps, newChirp]);
   };
+
+  fetch("http://localhost:3000/api/chirps", {
+    method: "POST",
+    headers: {"content-type": "application.json" },
+    body 
+  })
 
   //rest
   const getChirps = () => {
@@ -135,8 +148,8 @@ const App = () => {
               <ChirpCard
                 key={chirp.id}
                 username={chirp.username}
-                message={chirp.message}
-                created={chirp.created}
+                content={chirp.message}
+                created={chirp._created}
               />
             ))}
           </div>
