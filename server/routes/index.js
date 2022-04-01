@@ -1,21 +1,8 @@
-const express = require('express')
-const db = require('../db');
+import * as express from "express";
 const router = express.Router();
-// const chirpsRouter = require("./chirps");
+import chirpsRouter from "./chirps";
 
 // localhost:3000/api/chirps/
-// router.get("/chirps", chirpsRouter) 
+router.use("/chirps", chirpsRouter);
 
-router.get('/', async (req, res, next) => {
-
-    try {
-        let results = await db.all();
-        res.json(results);
-    } catch(e) {
-        console.log(e);
-        Read.sendStatus(500);
-    }
-});
-
-
-module.exports = router;
+export default router;

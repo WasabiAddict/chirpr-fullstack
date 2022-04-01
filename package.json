@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "./client/index.jsx",
-  
   "scripts": {
     "watch:build": "npx webpack -w",
     "watch:server": "nodemon dist/server.js",
